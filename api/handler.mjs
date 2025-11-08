@@ -1,9 +1,9 @@
-import worker from "../src/worker.mjs";
+import worker from "../src/my-worker.mjs";
 
 export default worker.fetch;
 
 export const config = {
-  runtime: "edge", 
+  runtime: "edge",
   // Available languages and regions for Google AI Studio and Gemini API
   // https://ai.google.dev/gemini-api/docs/available-regions#available_regions
   // Vercel Edge Network Regions
