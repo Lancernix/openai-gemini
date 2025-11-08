@@ -2,7 +2,7 @@ const MAX_RETRIES = 3; // 最大重试次数，保持在全局
 const API_CLIENT = "google-genai-sdk/1.28.0"; // 兜底 API_CLIENT
 
 export default {
-  async fetch (request, env) {
+  async fetch (request) {
     if (request.method === "OPTIONS") {
       return handleOPTIONS();
     }
@@ -28,8 +28,8 @@ export default {
       }
 
       // 从环境变量中获取所有 Google API Keys 和期望的客户端鉴权码
-      const allGoogleApiKeys = env.GOOGLE_GEMINI_API_KEYS?.split(',').map(k => k.trim()).filter(Boolean);
-      const expectedAuthCode = env.AUTH_CODE;
+      const allGoogleApiKeys = process.env.GOOGLE_GEMINI_API_KEYS?.split(',').map(k => k.trim()).filter(Boolean);
+      const expectedAuthCode = process.env.AUTH_CODE;
 
       // 服务器配置检查
       if (!allGoogleApiKeys || allGoogleApiKeys.length === 0) {
